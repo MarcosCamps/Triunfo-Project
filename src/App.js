@@ -15,10 +15,12 @@ class App extends React.Component {
       attr3: '',
       rareCardSelect: 'normal',
       superTrunfoCheck: false,
+      newCard: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.isSaveButtonDisabled = this.isSaveButtonDisabled.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -27,6 +29,40 @@ class App extends React.Component {
     this.setState({
       [target.name]: value,
     }, () => this.isSaveButtonDisabled());
+  }
+
+  onSaveButtonClick() {
+    const { nameCard,
+      description,
+      image,
+      attr1,
+      attr2,
+      attr3,
+      rareCardSelect,
+      superTrunfoCheck,
+      newCard,
+    } = this.state;
+    const card = { nameCard,
+      description,
+      image,
+      attr1,
+      attr2,
+      attr3,
+      rareCardSelect,
+      superTrunfoCheck,
+    };
+    const cardNew = [...newCard, card];
+    this.setState({
+      nameCard: '',
+      description: '',
+      image: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      rareCardSelect: 'normal',
+      superTrunfoCheck: false,
+      newCard: [],
+    }, () => this.setState({ newCard: cardNew }));
   }
 
   isSaveButtonDisabled() {
@@ -82,6 +118,7 @@ class App extends React.Component {
           cardRare={ rareCardSelect }
           cardTrunfo={ superTrunfoCheck }
           isSaveButtonDisabled={ this.isSaveButtonDisabled() }
+          onSaveButtonClick={ () => this.onSaveButtonClick() }
         />
         <Card
           cardName={ nameCard }
