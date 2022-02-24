@@ -28,7 +28,8 @@ class Form extends React.Component {
               value={ cardName }
               data-testid="name-input"
               type="text"
-              id="input-name"
+              // id="input-name"
+              name="nameCard"
               onChange={ onInputChange }
             />
           </label>
@@ -40,6 +41,7 @@ class Form extends React.Component {
               cols="50"
               rows="3"
               data-testid="description-input"
+              name="description"
               value={ cardDescription }
               onChange={ onInputChange }
             />
@@ -51,6 +53,7 @@ class Form extends React.Component {
               type="number"
               id="input-number1"
               value={ cardAttr1 }
+              name="attr1"
               data-testid="attr1-input"
               onChange={ onInputChange }
             />
@@ -62,6 +65,7 @@ class Form extends React.Component {
               type="number"
               id="input-number2"
               value={ cardAttr2 }
+              name="attr2"
               data-testid="attr2-input"
               onChange={ onInputChange }
             />
@@ -73,6 +77,7 @@ class Form extends React.Component {
               type="number"
               id="input-number3"
               value={ cardAttr3 }
+              name="attr3"
               data-testid="attr3-input"
               onChange={ onInputChange }
             />
@@ -85,6 +90,7 @@ class Form extends React.Component {
               id="input-img"
               value={ cardImage }
               data-testid="image-input"
+              name="image"
               onChange={ onInputChange }
             />
           </label>
@@ -94,6 +100,7 @@ class Form extends React.Component {
             id="input-select"
             value={ cardRare }
             data-testid="rare-input"
+            name="rareCardSelect"
             onChange={ onInputChange }
           >
             <option value="normal">Normal</option>
@@ -107,6 +114,7 @@ class Form extends React.Component {
               type="checkbox"
               checked={ cardTrunfo }
               id="input-checkbox"
+              name="superTrunfoCheck"
               data-testid="trunfo-input"
               onChange={ onInputChange }
             />
