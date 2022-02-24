@@ -16,6 +16,7 @@ class App extends React.Component {
       rareCardSelect: 'normal',
       superTrunfoCheck: false,
       newCard: [],
+      hasTrunfo: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -52,6 +53,10 @@ class App extends React.Component {
       superTrunfoCheck,
     };
     const cardNew = [...newCard, card];
+    console.log(cardNew);
+    const trunfoCardSelect = cardNew.some((element) => element.superTrunfoCheck);
+    console.log(trunfoCardSelect);
+
     this.setState({
       nameCard: '',
       description: '',
@@ -62,7 +67,10 @@ class App extends React.Component {
       rareCardSelect: 'normal',
       superTrunfoCheck: false,
       newCard: [],
-    }, () => this.setState({ newCard: cardNew }));
+    }, () => this.setState({
+      newCard: cardNew,
+      hasTrunfo: trunfoCardSelect,
+    }));
   }
 
   isSaveButtonDisabled() {
@@ -91,6 +99,7 @@ class App extends React.Component {
     if (sumAttr > maxSum) return true;
     return false;
   }
+
   // Função isSaveButtonDisabled req.5 auxílio Débora Serra tribo B.
 
   render() {
@@ -102,6 +111,7 @@ class App extends React.Component {
       attr3,
       rareCardSelect,
       superTrunfoCheck,
+      hasTrunfo,
     } = this.state;
     const { onInputChange } = this;
     return (
@@ -119,6 +129,7 @@ class App extends React.Component {
           cardTrunfo={ superTrunfoCheck }
           isSaveButtonDisabled={ this.isSaveButtonDisabled() }
           onSaveButtonClick={ () => this.onSaveButtonClick() }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ nameCard }
