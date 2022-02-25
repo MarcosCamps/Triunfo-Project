@@ -55,7 +55,6 @@ class App extends React.Component {
     const cardNew = [...newCard, card];
     console.log(cardNew);
     const trunfoCardSelect = cardNew.some((element) => element.superTrunfoCheck);
-    console.log(trunfoCardSelect);
 
     this.setState({
       nameCard: '',
@@ -112,36 +111,54 @@ class App extends React.Component {
       rareCardSelect,
       superTrunfoCheck,
       hasTrunfo,
+      newCard,
     } = this.state;
     const { onInputChange } = this;
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ nameCard }
-          onInputChange={ onInputChange }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rareCardSelect }
-          cardTrunfo={ superTrunfoCheck }
-          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
-          onSaveButtonClick={ () => this.onSaveButtonClick() }
-          hasTrunfo={ hasTrunfo }
-        />
-        <Card
-          cardName={ nameCard }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rareCardSelect }
-          cardTrunfo={ superTrunfoCheck }
-        />
-      </div>
+      <section>
+        <div>
+          <h1>Tryunfo</h1>
+          <Form
+            cardName={ nameCard }
+            onInputChange={ onInputChange }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ rareCardSelect }
+            cardTrunfo={ superTrunfoCheck }
+            isSaveButtonDisabled={ this.isSaveButtonDisabled() }
+            onSaveButtonClick={ () => this.onSaveButtonClick() }
+            hasTrunfo={ hasTrunfo }
+          />
+          <Card
+            cardName={ nameCard }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ rareCardSelect }
+            cardTrunfo={ superTrunfoCheck }
+          />
+        </div>
+        <div>
+          {newCard.map((card) => (
+            <Card
+              key={ card.nameCard }
+              cardName={ card.nameCard }
+              cardDescription={ card.description }
+              cardAttr1={ card.attr1 }
+              cardAttr2={ card.attr2 }
+              cardAttr3={ card.attr3 }
+              cardImage={ card.image }
+              cardRare={ card.rareCardSelect }
+              cardTrunfo={ card.superTrunfoCheck }
+            />
+          ))}
+        </div>
+      </section>
     );
   }
 }
